@@ -1,30 +1,9 @@
-# Nginx Multi-Service Cluster & Reverse Proxy on Docker 🐳
+# Docker Nginx Reverse Proxy Setup
 
-A containerized load-balancing and reverse-proxy architecture built with Docker and Nginx, routing traffic across multiple containerized web nodes and static backends.
+Nginx reverse proxy routing traffic across internal web nodes using Docker containers.
 
----
+## Overview
 
-## 🏗️ Architecture Overview
-
-```
-                      +-------------------+
-                      |   Client Request  |
-                      +---------+---------+
-                                |
-                      +---------v---------+
-                      |   Nginx Gateway   |
-                      |  (Reverse Proxy)  |
-                      +----+---------+----+
-                           |         |
-            +--------------+         +--------------+
-            |                                       |
-    +-------v-------+                       +-------v-------+
-    | Web Node 1    |                       | Web Node 2    |
-    | (Port 8001)   |                       | (Port 8002)   |
-    +---------------+                       +---------------+
-```
-
-## 🚀 Key Highlights
-- **Reverse Proxy Routing**: Configured Nginx virtual hosts to distribute HTTP requests across internal service networks.
-- **Micro-Services Isolation**: Each web node runs independently in isolated Docker network namespaces.
-- **Zero-Downtime Resilience**: Isolated service failures prevent cluster-wide interruption.
+- An Nginx container acts as the entry point, distributing incoming requests.
+- Internal web services run on isolated container ports.
+- Configured with custom Nginx virtual hosts.
